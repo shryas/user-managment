@@ -1,0 +1,159 @@
+﻿<div class="container-fluid nopad header">
+    <div class="col-md-9">
+        <h2 class="cursordefault">NodeJS Task
+            <span style="font-size: 14px">(User Management)</span>
+        </h2>
+    </div>
+    <div class="col-md-3">
+        <div class="col-md-8" style="padding:0px">
+            <p class="pull-right cursordefault" style="line-height:60px;margin: 0px;"> Welcome,
+                <b>{{currentUser.user.username}} </b>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <a [routerLink]="['/login']">
+                <i class="fa fa-sign-out" aria-hidden="true" data-toggle="tooltip" title="Logout" style="line-height: 60px;font-size:25px"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="padding:10px">
+    <p-panel header="User Details" [toggleable]="true">
+        <p-table [value]="users" selectionMode="single" [(selection)]="selectedRow" dataKey="_id">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="center">Id</th>
+                    <th class="center">User Name</th>
+                    <th class="center">Email</th>
+                    <th class="center">Date of Birth</th>
+                    <th class="center">Role</th>
+                    <!-- <th *ngIf="role == 1" style=" width:100px"></th> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr (click)="onRowSelect(user)">
+                    <td>{{user._id}}</td>
+                    <td class="center">{{user.username}}</td>
+                    <td class="center">{{user.email}}</td>
+                    <td class="center">{{user.dob}}</td>
+                    <td class="center">{{user.role}}</td>
+                    <!-- <td *ngIf="role == 1">
+                        <a (click)="deleteUser(user._id)" style="cursor: pointer;text-align: center;display:block">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td> -->
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="summary" let-rowData>
+                <div style="text-align:left">
+                    <button class="btn btn-primary" type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add">Add</button>
+                </div>
+            </ng-template>
+        </p-table>
+    </p-panel>
+</div>
+
+<p-panel header="Paranthesis Validation" [toggleable]="true" [style]="{'margin':'10px'}">
+    <textarea cols="100" rows="5" type="text" [(ngModel)]="paranthesis" class="form-control" pInputText> </textarea>
+    <br>
+    <button class="btn btn-primary" pButton type="button" label="Check" (click)="checkvalidation(paranthesis)">Check</button>
+    <p class="pararesult">{{paranthesesState}} <span style="font-size:14px; font-weight:700">( {{userAttempts}} )</span></p>
+    
+</p-panel>
+<p-dialog header="Edit user Information" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" [width]="500">
+    <div class="ui-g ui-fluid" *ngIf="display">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="edituser">User Name</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="edituser" [(ngModel)]="selectedRow.username" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="editemail">Email</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="editemail" [(ngModel)]="selectedRow.email" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="editrole">Roles</label>
+            </div>
+            <div class="ui-g-8">
+                <p-dropdown appendTo="body" [options]="roles" [(ngModel)]="selectedRow.role" [autoWidth]="false" placeholder="{{selectedRow.role}}"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="editdob">Date of Birth</label>
+            </div>
+            <div class="ui-g-8">
+                <input type="text" id="editdob" [(ngModel)]="selectedRow.dob" placeholder="dd-mm-yyyy" />
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" class="btn btn-primary" pButton icon="fa fa-close" (click)="cancel()" label="Cancel">Cancel</button>
+            <button type="button" class="btn btn-primary" pButton icon="fa fa-check" (click)="update(selectedRow)" label="Save">Save</button>
+            <button *ngIf="role == 1" type="button" class="btn btn-primary" pButton icon="fa fa-delete" (click)="deleteUser(selectedRow._id)" label="delete">Delete</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Add new user Information" [(visible)]="displayadd" [responsive]="true" showEffect="fade" [modal]="true"
+    [width]="500">
+    <div class="ui-g ui-fluid" *ngIf="displayadd">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="adduser">User Name</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="adduser" [(ngModel)]="adduserusername" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="addemail">Email</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="addemail" [(ngModel)]="adduseremail" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="addpass">Password</label>
+            </div>
+            <div class="ui-g-8">
+                <input type="text" id="addpass" [(ngModel)]="adduserpassword" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="addroles">Roles</label>
+            </div>
+            <div class="ui-g-8">
+                <p-dropdown appendTo="body" [options]="roles" [(ngModel)]="adduserrole" [autoWidth]="false"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="adddob">Date of Birth</label>
+            </div>
+            <div class="ui-g-8">
+                <input type="text" id="adddob" [(ngModel)]="adduserdob"  placeholder="dd-mm-yyyy"/>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" class="btn btn-primary" pButton icon="fa fa-close" (click)="canceladd()" label="Cancel">Cancel</button>
+            <button type="button" class="btn btn-primary" pButton icon="fa fa-check" (click)="addUser(adduser)" label="Save">Save</button>
+        </div>
+    </p-footer>
+</p-dialog>

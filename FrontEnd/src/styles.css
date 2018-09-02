@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~../node_modules/primeng/resources/themes/Start/theme.css';
+@import '~../node_modules/primeng/resources/primeng.min.css';
+
+body{
+    margin: 0px;
+    padding:0px;
+}
+
+html::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  html::-webkit-scrollbar {
+    width: 5px;
+    border-radius:10px;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #26abe3;
+    outline: 1px solid #26abe3;
+    }
+
+.center{
+    text-align: center;
+}
+
+.nopad{
+    padding:0px;
+    margin:0px
+}
+
+.header{
+    min-height:60px;
+    background:#ADD8E6;
+    margin-bottom:50px;
+    box-shadow:0px 0px 5px 1px black;
+}
+
+.header h2{
+    margin:0px;
+    line-height: 60px;
+    text-indent: 10%;
+}
+
+.container-fluid{
+    padding:0px;
+}
+
+.col-md-12{
+    padding:0px;
+}
+
+.cursordefault{
+    cursor:default;
+}
+
+.alert {
+    z-index: 9999;
+    right: 0%;
+    top:9%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 20%;
+    text-align: center;
+    position: absolute;
+    margin: 10px;
+}
+
+.box{
+    margin-top: 50px;
+    box-shadow: 0px 0px 5px 1px;
+    border-radius: 2px;
+}
+
+.btn-primary{
+    background: #ADD8E6;
+    color: black;
+}
+
+hr{
+    border:1px solid #ADD8E6;
+}
+
+.pararesult{
+    float: right;
+    font-weight: 700;
+    font-variant-caps: all-petite-caps;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+input{
+    width: 100%;
+    text-indent: 10px;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+    color: grey!important;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  ::placeholder {
+    color: grey!important;
+    font-size: 12px;
+  }
