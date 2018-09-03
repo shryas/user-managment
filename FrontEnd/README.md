@@ -26,14 +26,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## UI
 
-![login page](../master/FrontEnd/src/assets/login.PNG)
+![Login Page](https://github.com/shryas/user-managment/blob/master/FrontEnd/src/assets/login.PNG?raw=true)
 
-![register page](../master/FrontEnd/src/assets/register.PNG)
+![Register Page](https://github.com/shryas/user-managment/blob/master/FrontEnd/src/assets/register.PNG?raw=true)
 
-![home page](../master/FrontEnd/src/assets/home.PNG)
+![Home Page](https://github.com/shryas/user-managment/blob/master/FrontEnd/src/assets/home.PNG?raw=true)
 
-![edit user page](../master/FrontEnd/src/assets/Edituser.PNG)
+![Edit User Page](https://github.com/shryas/user-managment/blob/master/FrontEnd/src/assets/Edituser.PNG?raw=true)
 
-![add user page](../master/FrontEnd/src/assets/adduser.PNG)
+![Add User Page](https://github.com/shryas/user-managment/blob/master/FrontEnd/src/assets/adduser.PNG?raw=true)
 
-![parantheses validator page](../master/FrontEnd/src/assets/parantheses.PNG)
+![Parantheses Validator Page](https://github.com/shryas/user-managment/blob/master/FrontEnd/src/assets/parantheses.PNG?raw=true)
